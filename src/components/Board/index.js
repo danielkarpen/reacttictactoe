@@ -6,7 +6,14 @@ const Board = () => {
   const [contents, setContents] = useState(Array.from({ length: 9 }, () => ""));
 
   function handleClick(ev) {
-    console.log(ev.target);
+    console.log(ev.target.dataset.num);
+    setContents((prevContents) => {
+      const newContents = [...prevContents];
+      newContents[ev.target.dataset.num] = char;
+      return newContents;
+    });
+
+    setChar((prevChar) => (prevChar === "X" ? "O" : "X"));
   }
 
   function renderSquares(contents) {
